@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { clerk } from "@/lib/clerk-server";
 import TipTapEditor from "@/components/TipTapEditor";
+import DeleteButton from "@/components/DeleteButton";
 
 type Props = {
   params: {
@@ -36,14 +37,18 @@ export default async function page({ params: { id } }: Props) {
             <Button className="bg-purple-600">Back</Button>
           </Link>
           <div className="w-4" />
-          <span className="font-semibold">{user.firstName} {user.lastName}</span>
+          <span className="font-semibold">
+            {user.firstName} {user.lastName}
+          </span>
           <span className="inline-block mx-1">/</span>
           <span className="text-stone-500">{notebook[0].name}</span>
-          <div className="ml-auto">DELETE</div>
+          <div className="ml-auto">
+            <DeleteButton noteId={parseInt(id)} />
+          </div>
         </div>
         <div className="h-4" />
         <div className="border-stone-200 shadow-xl border rounded-lg px-16 py-8 w-full">
-            <TipTapEditor notebook={notebook[0]} />
+          <TipTapEditor notebook={notebook[0]} />
         </div>
       </div>
     </div>

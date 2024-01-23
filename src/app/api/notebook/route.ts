@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     .insert($notebooks)
     .values({
       name: name,
-      imageURL: "https://picsum.photos/256",
+      imageURL: `https://picsum.photos/seed/${name}/256`,
       userId: userId,
     })
     .returning({

@@ -46,9 +46,9 @@ export default function TipTapEditor({ notebook }: Props) {
     <>
       <div className="flex py-6 gap-4">
         {editor && <TipTapMenu editor={editor} />}
-        <Button>{saveContent.isPending ? "Saving" : "Saved"}</Button>
+        <Button disabled={saveContent.isPending} >{saveContent.isPending ? "Saving" : "Saved"}</Button>
       </div>
-      <div className="prose">
+      <div className="prose prose-sm w-full">
         <EditorContent editor={editor} />
       </div>
     </>
