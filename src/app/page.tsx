@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
-import TypeWriterTitle from "@/components/ui/TypeWriterTitle";
+import TypeWriterTitle from "@/components/TypeWriterTitle";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {

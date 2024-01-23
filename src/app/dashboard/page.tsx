@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { Separator } from "@/components/ui/separator";
+import CreateNoteDialog from "@/components/CreateNoteDialog";
 
 type Props = {};
 
@@ -31,6 +32,11 @@ export default function page({}: Props) {
         {/* List of notes */}
         <div className="text-center">
             <h2 className="text-xl text-gray-500">You have no notebooks yet!</h2>
+        </div>
+
+        {/* Display all notes */}
+        <div className="grid sm:grid-col-3 md:grid-col-5 grid-col-1 gap-3">
+            <CreateNoteDialog />
         </div>
       </div>
     </div>

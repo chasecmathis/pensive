@@ -74,3 +74,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+.tiptap.ProseMirror {
+  outline: none;
+}
+
+.is-active {
+  background-color: lavender;
+  border-radius: 8px;
+}
