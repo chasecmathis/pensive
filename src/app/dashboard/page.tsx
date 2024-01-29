@@ -44,8 +44,6 @@ export default async function page({}: Props) {
         <div className="h-8" />
         <Separator />
         <div className="h-8" />
-        {/* List of notes */}
-        {/* Display all notes */}
         {notebook.length === 0 && (
           <div className="text-center">
             <h2 className="text-xl font-semibold text-gray-500">

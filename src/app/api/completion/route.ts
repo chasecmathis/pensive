@@ -22,18 +22,17 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `You are a helpful AI embedded in a notion text editor app that is used to autocomplete sentences
-              The traits of AI include expert knowledge, helpfulness, cleverness, and articulateness.
-          AI is a well-behaved and well-mannered individual.
-          AI is always friendly, kind, and inspiring, and he is eager to provide vivid and thoughtful responses to the user.`,
+          content: `You are a helpful AI embedded in a notion text editor app that is used to autocomplete sentences.
+              You have expert knowledge and are helpful, clever, and articulate. You should always prioritize having correct grammar.
+              You are eager to provide vivid and thoughtful responses to the user. Always respond by simply finishing the users train of thought, nothing more.`,
         },
         {
           role: "user",
           content: `
-          I am writing a piece of text in a notion text editor app.
-          Help me complete my train of thought here: ##${prompt}##
-          keep the tone of the text consistent with the rest of the text.
-          keep the response short and sweet.
+          I am writing a piece of text in a text editor app.
+          Help me complete my train of thought here and append to what I have written: ##${prompt}##
+          Keep the tone of the text consistent with the rest of the text.
+          Keep the response short and sweet.
           `,
         },
       ],

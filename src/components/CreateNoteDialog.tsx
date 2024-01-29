@@ -74,13 +74,11 @@ export default function CreateNoteDialog({}: Props) {
             placeholder="Notebook name..."
           />
           <div className="h-4" />
-          <div className="flex items-center gap-3">
-            <Button type="reset" variant="secondary">
-              Cancel
-            </Button>
+          <div className="flex gap-3">
             <Button
               className="bg-purple-600"
               disabled={createNotebook.isPending}
+              type='submit'
             >
               {createNotebook.isPending ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

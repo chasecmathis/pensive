@@ -31,6 +31,7 @@ export async function POST(req: Request) {
       name: name,
       imageURL: `https://picsum.photos/seed/${name}/256`,
       userId: userId,
+      content: `<h1>${name}<h1>`
     })
     .returning({
       id: $notebooks.id,

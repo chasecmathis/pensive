@@ -41,11 +41,24 @@ export default function TipTapEditor({ notebook }: Props) {
     }
   }, [debouncedContent]);
 
+  const lastCompletion = useRef("");
+
+  useEffect(() => {
+    if (!completion || !editor) return;
+    const diff = completion.slice(lastCompletion.current.length);
+    lastCompletion.current = completion;
+    editor.commands.insertContent(diff);
+  }, [completion]);
+
   const shortcut = Text.extend({
     addKeyboardShortcuts() {
       return {
         "Control-a": () => {
-          const prompt = this.editor.getText().split(" ").slice(-30).join(" ");
+          const text = this.editor.getText();
+          let prompt = text.split(" ").slice(-30).join(" ");
+
+          lastCompletion.current = "";
+
           complete(prompt);
           return true;
         },
@@ -59,15 +72,6 @@ export default function TipTapEditor({ notebook }: Props) {
     content: content,
     onUpdate: ({ editor }) => setContent(editor.getHTML()),
   });
-
-  const lastCompletion = useRef("");
-
-  useEffect(() => {
-    if (!completion || !editor) return;
-    const diff = completion.slice(lastCompletion.current.length);
-    lastCompletion.current = completion;
-    editor.commands.insertContent(diff);
-  }, [completion, editor]);
 
   return (
     <>
