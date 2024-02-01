@@ -55,20 +55,21 @@ export default async function page({}: Props) {
           <CreateNoteDialog />
           {notebook.map((note) => (
             <a href={`/notebook/${note.id}`} key={note.id}>
-              <div className="border border-stone-200 rounded-lg overflow-hidden flex flex-col hover:shadow-xl transition hover:-translate-y-1">
-                <Image
-                  src={note.imageURL || ""}
-                  width={400}
-                  height={200}
-                  alt={note.name}
+              <div className="border border-purple-500 rounded-lg overflow-hidden flex flex-col hover:shadow-xl transition hover:-translate-y-1">
+                <div
+                  className="w-[400px] h-[200px]"
+                  style={{
+                    backgroundColor: note.background || "#fffff",
+                    backgroundImage: note.background || "",
+                  }}
                 />
                 <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {note.name}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {new Date(note.createdAt!).toLocaleDateString()}
-                </p>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {note.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {new Date(note.createdAt!).toLocaleDateString()}
+                  </p>
                 </div>
               </div>
             </a>

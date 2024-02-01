@@ -4,7 +4,7 @@ export const $notebooks = pgTable("notebooks", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
-  imageURL: text("image_url"),
+  background: text("background"),
   userId: text("user_id").notNull(),
   content: text("content"),
 });

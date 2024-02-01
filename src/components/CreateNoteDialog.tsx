@@ -15,17 +15,20 @@ import { Button } from "./ui/button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { GradientPicker } from "./GradientPicker";
 
 type Props = {};
 
 export default function CreateNoteDialog({}: Props) {
   const router = useRouter();
   const [input, setInput] = useState("");
+  const [background, setBackground] = useState("#dddddd");
 
   const createNotebook = useMutation({
     mutationFn: async () => {
       const resp = await axios.post("/api/notebook", {
         name: input,
+        background: background,
       });
       return resp.data;
     },
@@ -74,11 +77,21 @@ export default function CreateNoteDialog({}: Props) {
             placeholder="Notebook name..."
           />
           <div className="h-4" />
+          <div
+            className="preview flex justify-center p-10 items-center rounded-xl"
+            style={{ background }}
+          >
+            <GradientPicker
+              background={background}
+              setBackground={setBackground}
+            />
+          </div>
+          <div className="h-4" />
           <div className="flex gap-3">
             <Button
               className="bg-purple-600"
               disabled={createNotebook.isPending}
-              type='submit'
+              type="submit"
             >
               {createNotebook.isPending ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

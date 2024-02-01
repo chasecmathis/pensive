@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { name } = body;
+  const { name, background } = body;
   //   const image_description = await generateImagePrompt(name);
 
   //   let image = await generateImage(image_description);
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     .insert($notebooks)
     .values({
       name: name,
-      imageURL: `https://picsum.photos/seed/${name}/256`,
+      background: background,
       userId: userId,
       content: `<h1>${name}<h1>`
     })
